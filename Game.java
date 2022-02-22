@@ -31,8 +31,18 @@ public class Game {
     }
 
     public void play(Card c1) {
+        
+        if(c1.getCredit()<gameCost){
+            System.out.println("Alert!!! \nYou don't have sufficent credit to play the game!!!");
+        }
+        else{
+        int prizeNo =  rn.nextInt(10)+1;
         c1.setCredit(c1.getCredit() - gameCost);
-        c1.setTickets(c1.getTickets() + rn.nextInt(9));
+        System.out.println(prizeNo+ " tickets won!!!");
+        c1.setTickets(c1.getTickets()+ prizeNo);
+        System.out.println(c1.getTickets()+" ticket total!!");
+        System.out.println("You have " + c1.getCredit() + " credit left!!");
+        }
     }
 
 }

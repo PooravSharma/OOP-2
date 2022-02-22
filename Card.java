@@ -16,21 +16,22 @@ public class Card {
     private int cardNo;
     private int credit;
     private int tickets;
-
+    private static int noCards = 1;
     public Card() {
-        cardNo = rn.nextInt(99999999);
+        this.cardNo = noCards;
+        noCards++;
+    }
+
+    public Card(int incardNo) {
+        cardNo = incardNo;
     }
 
     public int getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
-        this.credit = credit;
-    }
-
-    public Card(int cardNo) {
-        this.cardNo = cardNo;
+    public void setCredit(int incredit) {
+        credit = incredit;
     }
 
     /**
@@ -43,8 +44,29 @@ public class Card {
     /**
      * @param tickets the tickets to set
      */
-    public void setTickets(int tickets) {
-        this.tickets = tickets;
+    public void setTickets(int intickets) {
+        tickets = intickets;
+    }
+
+    /**
+     * @return the cardNo
+     */
+    public int getCardNo() {
+        return cardNo;
+    }
+
+    /**
+     * @return the noCards
+     */
+    public static int getNoCards() {
+        return noCards;
+    }
+
+    /**
+     * @param aNoCards the noCards to set
+     */
+    public static void setNoCards(int aNoCards) {
+        noCards = aNoCards;
     }
 
 }
