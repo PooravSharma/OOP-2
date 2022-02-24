@@ -10,4 +10,14 @@ package ProgrammingRequirements;
  */
 public class PrizeCategory {
 
+    public int prizeCost;
+    public String name;
+    public int prizeCount;
+
+    public PrizeCategory(String inName, int coTicket, int pNumber) {
+        prizeCost = coTicket;
+        name = inName;
+        prizeCount = pNumber;
+    }
+
 }

@@ -19,19 +19,17 @@ public class DateNightAtTheArcade {
         // TODO code application logic here
         Card c1 = new Card();
         Card c2 = new Card(3045945);
-        Card c3 = new Card();
         Terminal t1 = new Terminal();
         Game game1 = new Game();
         Game game2 = new Game(1);
-
-         System.out.println(c1. getCardNo());
-          System.out.println(c2. getCardNo());
-          System.out.println(c3. getCardNo());
-          
-        System.out.println(c1.getCredit());
+        PrizeCategory prize1 = new PrizeCategory("Candy", 5, 5);
+        PrizeCategory prize2 = new PrizeCategory("Hat", 1, 5);
+        PrizeCategory prize3 = new PrizeCategory("Teddy", 5, 3);
 
         t1.addCredit(c1, 20);
-        System.out.println(c1.getCredit());
+        t1.addCredit(c2, 5);
+        System.out.println("Card 1 has " + c1.getCredit() + " credits");
+        System.out.println("Card 2 has " + c2.getCredit() + " credits");
 
         t1.transferCredit(c1, c2);
         System.out.println("Card #1 Credit = " + c1.getCredit());
@@ -50,6 +48,9 @@ public class DateNightAtTheArcade {
         System.out.println("Card #1 Tickets = " + c1.getTickets());
         System.out.println("Card #2 Tickets = " + c2.getTickets());
 
+        t1.getPrize(prize1, c1);
+        t1.getPrize(prize2, c2);
+        t1.getPrize(prize3, c1);
     }
 
 }

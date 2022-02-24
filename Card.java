@@ -17,6 +17,7 @@ public class Card {
     private int credit;
     private int tickets;
     private static int noCards = 1;
+
     public Card() {
         this.cardNo = noCards;
         noCards++;
