@@ -10,14 +10,42 @@ package ProgrammingRequirements;
  */
 public class PrizeCategory {
 
-    public int prizeCost;
-    public String name;
-    public int prizeCount;
+    private int prizeCost;
+    private String name;
+    private int prizeCount;
 
     public PrizeCategory(String inName, int coTicket, int pNumber) {
         prizeCost = coTicket;
         name = inName;
         prizeCount = pNumber;
+    }
+
+    /**
+     * @param prizeCount the prizeCount to set
+     */
+    public void setPrizeCount(int prizeCount) {
+        this.prizeCount = prizeCount;
+    }
+
+    /**
+     * @return the prizeCount
+     */
+    public int getPrizeCount() {
+        return prizeCount;
+    }
+
+    /**
+     * @return the prizeCost
+     */
+    public int getPrizeCost() {
+        return prizeCost;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 
 }

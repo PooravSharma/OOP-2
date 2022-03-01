@@ -23,8 +23,8 @@ public class DateNightAtTheArcade {
         Game game1 = new Game();
         Game game2 = new Game(1);
         PrizeCategory prize1 = new PrizeCategory("Candy", 5, 5);
-        PrizeCategory prize2 = new PrizeCategory("Hat", 1, 5);
-        PrizeCategory prize3 = new PrizeCategory("Teddy", 5, 3);
+        PrizeCategory prize2 = new PrizeCategory("Hat", 100, 5);
+        PrizeCategory prize3 = new PrizeCategory("Teddy", 5, 0);
 
         t1.addCredit(c1, 20);
         t1.addCredit(c2, 5);
@@ -34,6 +34,7 @@ public class DateNightAtTheArcade {
         t1.transferCredit(c1, c2);
         System.out.println("Card #1 Credit = " + c1.getCredit());
         System.out.println("Card #2 Credit = " + c2.getCredit());
+        System.out.println();
 
         for (int i = 0; i <= 4; i++) {
             System.out.println("###Play game#1 with card #1");
@@ -47,6 +48,7 @@ public class DateNightAtTheArcade {
         t1.transferTicket(c1, c2);
         System.out.println("Card #1 Tickets = " + c1.getTickets());
         System.out.println("Card #2 Tickets = " + c2.getTickets());
+        System.out.println();
 
         t1.getPrize(prize1, c1);
         t1.getPrize(prize2, c2);

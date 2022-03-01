@@ -44,18 +44,17 @@ public class Terminal {
 
     public void getPrize(PrizeCategory p1, Card c1) {
 
-        if (c1.getTickets() > p1.prizeCost || p1.prizeCount > 0) {
-            System.out.println("You have recieved " + p1.name);
-            c1.setTickets(c1.getTickets() - p1.prizeCost);
+        if (c1.getTickets() > p1.getPrizeCost() && p1.getPrizeCount() > 0 && p1.getPrizeCount() > 0) {
+            System.out.println("You have recieved " + p1.getName());
+            c1.setTickets(c1.getTickets() - p1.getPrizeCost());
+            p1.setPrizeCount(p1.getPrizeCount() - 1);
 
-            System.out.println("You have " + c1.getTickets() + " ticket left!!");
+            System.out.println("You have " + c1.getTickets() + " ticket left!!\n");
 
-        }
-        if (c1.getTickets() < p1.prizeCost) {
-            System.out.println("Insufficient tickets to buy prize");
-        }
-        if (p1.prizeCount < 0) {
-            System.out.println("SORRY!!! we have zero " + p1.name + "left");
+        } else if (p1.getPrizeCount() == 0) {
+            System.out.println("SORRY!!! we have zero " + p1.getName() + " left\n");
+        } else if (c1.getTickets() < p1.getPrizeCost()) {
+            System.out.println("Insufficient tickets to buy prize\n");
         }
 
     }
