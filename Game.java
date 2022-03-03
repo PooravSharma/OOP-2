@@ -2,46 +2,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ProgrammingRequirements;
-
-import java.util.Random;
+package soccergame;
 
 /**
  *
  * @author 30045900
  */
 public class Game {
+    private int tempDay;
+    private double avTempSeason;
+    int gameNumber = 1; 
+    Game[] gameRecord;
 
-    Random rn = new Random();
-    private int gameCost;
-
-    public Game() {
-        gameCost = 5;
-    }
-
-    public Game(int cost) {
-        this.gameCost = cost;
+    /**
+     * @return the tempDay
+     */
+    public int getTempDay() {
+        return tempDay;
     }
 
     /**
-     * @return the gameCost
+     * @param tempDay the tempDay to set
      */
-    public int getGameCost() {
-        return gameCost;
+    public void setTempDay(int tempDay) {
+        this.tempDay = tempDay;
     }
 
-    public void play(Card c1) {
-
-        if (c1.getCredit() < gameCost) {
-            System.out.println("Alert!!! \nYou don't have sufficent credit to play the game!!!\n");
-        } else {
-            int prizeNo = rn.nextInt(10) + 1;
-            c1.setCredit(c1.getCredit() - gameCost);
-            System.out.println(prizeNo + " tickets won!!!");
-            c1.setTickets(c1.getTickets() + prizeNo);
-            System.out.println(c1.getTickets() + " ticket total!!");
-            System.out.println("You have " + c1.getCredit() + " credit left!!\n");
-        }
+    /**
+     * @return the avTempSeason
+     */
+    public double getAvTempSeason() {
+        return avTempSeason;
     }
 
+    /**
+     * @param avTempSeason the avTempSeason to set
+     */
+    public void setAvTempSeason(double avTempSeason) {
+        this.avTempSeason = avTempSeason;
+    }
+    
+    public void gameStats(){
+        
+    }
+    
+   
 }
