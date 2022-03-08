@@ -14,10 +14,12 @@ public class SoccerGame {
         Team team2 = new Team("hey");
         Team team3 = new Team();
         Team team4 = new Team("yo");
-       
+        Team[] teams = new Team[]{team1, team2, team3, team4};
+        
         
         Scheduler scheduler = new Scheduler();
-          scheduler.getTemp();
+          scheduler.getTemp(teams);
+
        // System.out.println(team1.getTeamName());
        // System.out.println(team2.getTeamName());
        // System.out.println(team3.getTeamName());

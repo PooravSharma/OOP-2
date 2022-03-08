@@ -4,6 +4,7 @@
  */
 package soccergame;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,21 +15,25 @@ public class Scheduler {
 
     Exception exception = new Exception();
     Scanner sc = new Scanner(System.in);
+    Random rn = new Random();
     public int tempInput;
 
     private int coldWeeks = 0;
 
-    public void getTemp() {
+    public void getTemp(Team[] teams) {
         while (coldWeeks < 3) {
             System.out.print("Enter today's temperature: ");
             try {
-                Scanner sc = new Scanner(System.in);
-                tempInput = sc.nextInt();
+                Scanner sn = new Scanner(System.in);
+                tempInput = sn.nextInt();
 
             } catch (Exception ex) {
                 System.out.println("!!!!ERROR!!!!\nPlease enter correct temperature");
+                sc.next();
             }
             System.out.println("ly");
+            scheduleGame(teams);
+
             coldweeks();
         }
 
@@ -44,9 +49,37 @@ public class Scheduler {
 
         return coldWeeks;
     }
-    public void scheduleGame(Team t1, Team t2){
-        System.out.print("2 Games Scheduled. (1 game for 2 teams)");   
+
+    public void scheduleGame(Team[] teams) {
+
+        int tOne, tTwo, tThree, tFour;
+        tOne = rn.nextInt(4);
+        tTwo = 0;
+        tThree = 0;
+        tFour = 0;
+        //teams[rn.nextInt(3)];
+        for (int i = 0; i < 4; i++) {
+            if (tOne != i) {
+                tTwo = i;
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if (tTwo != i && tOne != i) {
+                tThree = i;
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if (tTwo != i && tThree != i && tOne != i) {
+                tFour = i;
+            }
+        }
+        Game game1 = new Game(teams[tOne],teams[tTwo], getTempInput());
+        Game game2 = new Game(teams[tThree],teams[tFour], getTempInput());
         
+                
+        System.out.println("2 Games scheduled. (1 game for 2 teams)");
+        System.out.println(teams[tOne].getTeamName() + " vs " + teams[tTwo].getTeamName());
+        System.out.println(teams[tThree].getTeamName() + " vs " + teams[tFour].getTeamName());
     }
 
     /**
@@ -55,5 +88,5 @@ public class Scheduler {
     public int getTempInput() {
         return tempInput;
     }
-    
+
 }

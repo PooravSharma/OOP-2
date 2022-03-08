@@ -12,39 +12,37 @@ public class Game {
     private int tempDay;
     private double avTempSeason;
     int gameNumber = 1; 
-    Game[] gameRecord;
+    Team team1, team2;
+    private static Game[] gameRecord;
+    
+    public Game(Team inTeam1, Team inTeam2, Scheduler sc){
+        tempDay =sc.getTempInput();
+        team1 = inTeam1;
+        team2 = inTeam2;
+        
+    }
 
-    /**
-     * @return the tempDay
-     */
     public int getTempDay() {
         return tempDay;
     }
 
-    /**
-     * @param tempDay the tempDay to set
-     */
+
     public void setTempDay(int tempDay) {
         this.tempDay = tempDay;
     }
 
-    /**
-     * @return the avTempSeason
-     */
+
     public double getAvTempSeason() {
         return avTempSeason;
     }
 
-    /**
-     * @param avTempSeason the avTempSeason to set
-     */
     public void setAvTempSeason(double avTempSeason) {
         this.avTempSeason = avTempSeason;
     }
     
     public void gameStats(){
-        
+       
     }
-    
+   
    
 }
