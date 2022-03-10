@@ -107,14 +107,23 @@ public class Team {
     }
 
 // </editor-fold>
-    public void TeamResult(Team t) {
-        System.out.println("*************RESULTS**************");
-        System.out.println("Team: " +t.getTeamName());
-        System.out.println("Total WIns: " + t.getTotalWin());
-        System.out.println("Total Losses: " +t.getTotalLoss());
-        System.out.println("Total Ties: " +t.getTieNumber() );
-        System.out.print("Total points scored: " + t.getTotalGoal());
-        System.out.print("  Total points allowed: " + t.getTotalgoalAllowed()+ "\n");
+    @Override
+    public String toString() {
+        return "*************RESULTS**************"
+                + "\nTeam: " + getTeamName()
+                + "\nTotal WIns: " + getTotalWin()
+                + "\nTotal Losses: " + getTotalLoss()
+                + "\nTotal Ties: " + getTieNumber()
+                + "\nTotal points scored: " + getTotalGoal()
+                + "    Total points allowed: " + getTotalgoalAllowed() + "\n";
+
+        // System.out.println("*************RESULTS**************");
+        // System.out.println("Team: " +getTeamName());
+        // System.out.println("Total WIns: " + getTotalWin());
+        // System.out.println("Total Losses: " + getTotalLoss());
+        // System.out.println("Total Ties: " + getTieNumber() );
+        // System.out.print("Total points scored: " + getTotalGoal());
+        // System.out.print("  Total points allowed: " + getTotalgoalAllowed()+ "\n");
     }
 
 }
