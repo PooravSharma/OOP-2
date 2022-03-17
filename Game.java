@@ -15,23 +15,22 @@ public class Game {
 
     private int tempDay;
     private double avTempSeason;
-    private String Game;
-    private static int gameNumber = 1;
+    private static String Game = "";
+    private String GameID;
+    private static int gameNumber = 1, tempAverage;
     Team team1, team2;
     private int homeScore;
     private int awayScore;
-    private int higestTemp = 0;
+    private static int higestTemp = 0;
     private static ArrayList<Game> gameRecord = new ArrayList<>();
-    Scheduler sc = new Scheduler();
 
-    public Game(Team t1, Team t2) {
-        tempDay = sc.getTempInput();
+    public Game(Team t1, Team t2, int temp) {
+        tempDay = temp;
         team1 = t1;
         team2 = t2;
+        tempCal();
         scoreMaker(t1, t2);
-
-        Game = "Game #" + getGameNumber();
-        
+        GameID = "Game #" + getGameNumber();
         gameNumber++;
         gameRecord.add(this);
     }
@@ -53,12 +52,14 @@ public class Game {
         this.avTempSeason = avTempSeason;
     }
 
-    public String toString() {
-        return Game
-                + "\nTemperature: " + tempDay
-                + "\n" + team1 + " goal score: " + getHomeScore()
-                + "\n" + team2 + " goal score: " + getAwayScore();
-
+    public String outString() {
+        for (Game game : gameRecord) {
+            Game = Game + "\n" + game.GameID
+                    + "\nTemperature: " + game.getTempDay()
+                    + "\n" + game.team1.getTeamName() + " goal score: " + game.getHomeScore()
+                    + "\n" + game.team2.getTeamName() + " goal score: " + game.getAwayScore() + "\n";
+        }
+        return Game;
     }
 
     /**
@@ -92,8 +93,8 @@ public class Game {
     /**
      * @param homeScore the homeScore to set
      */
-    public void setHomeScore(int homeScore) {
-        this.homeScore = homeScore;
+    public void setHomeScore(int inHomeScore) {
+        homeScore = inHomeScore;
     }
 
     /**
@@ -106,8 +107,8 @@ public class Game {
     /**
      * @param awayScore the awayScore to set
      */
-    public void setAwayScore(int awayScore) {
-        this.awayScore = awayScore;
+    public void setAwayScore(int inAwayScore) {
+        awayScore = inAwayScore;
     }
 
     /**
@@ -120,16 +121,16 @@ public class Game {
     /**
      * @param higestTemp the higestTemp to set
      */
-    public void setHigestTemp(int higestTemp) {
-        this.higestTemp = higestTemp;
+    public void setHigestTemp(int inHigestTemp) {
+        higestTemp = inHigestTemp;
     }
 // </editor-fold>
 
     private void scoreMaker(Team t1, Team t2) {
         Random rn = new Random();
 
-        setHomeScore(rn.nextInt(10) * (sc.getTempInput() / 10));
-        setAwayScore(rn.nextInt(10) * (sc.getTempInput() / 10));
+        setHomeScore(rn.nextInt(10) * (tempDay / 10));
+        setAwayScore(rn.nextInt(10) * (tempDay / 10));
         t1.setTotalGoal(t1.getTotalGoal() + getHomeScore());
         t2.setTotalgoalAllowed(t1.getTotalgoalAllowed() + getHomeScore());
         t1.setTotalgoalAllowed(t1.getTotalgoalAllowed() + getAwayScore());
@@ -150,20 +151,17 @@ public class Game {
     }
 
     public void tempCal() {
-        if (sc.getTempInput() > getHigestTemp()) {
-            setHigestTemp(sc.getTempInput());
+
+        if (tempDay > higestTemp) {
+            setHigestTemp(tempDay);
         }
-        int tempAverage = 0;
-        tempAverage += sc.getTempInput();
-        setAvTempSeason(tempAverage + gameRecord.size());
+        tempAverage += tempDay;
+        setAvTempSeason(tempAverage / (gameNumber * 1.0));
     }
 
     public void showTemp() {
-        System.out.println("Higest Temperature of season: " + getHigestTemp() + "\\u00B0 C");
-        System.out.println("Average Temperature of season: " + getAvTempSeason() + "\\u00B0 C");
-    }
-    public void showAll(){
-        System.out.println(gameRecord);
+        System.out.println("Higest Temperature of season: " + getHigestTemp() + "\u00B0C");
+        System.out.println("Average Temperature of season: " + getAvTempSeason() + "\u00B0C");
     }
 
 }

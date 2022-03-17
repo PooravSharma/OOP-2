@@ -109,21 +109,13 @@ public class Team {
 // </editor-fold>
     @Override
     public String toString() {
-        return "*************RESULTS**************"
-                + "\nTeam: " + getTeamName()
+        return "\nTeam: " + getTeamName()
                 + "\nTotal WIns: " + getTotalWin()
                 + "\nTotal Losses: " + getTotalLoss()
                 + "\nTotal Ties: " + getTieNumber()
                 + "\nTotal points scored: " + getTotalGoal()
                 + "    Total points allowed: " + getTotalgoalAllowed() + "\n";
 
-        // System.out.println("*************RESULTS**************");
-        // System.out.println("Team: " +getTeamName());
-        // System.out.println("Total WIns: " + getTotalWin());
-        // System.out.println("Total Losses: " + getTotalLoss());
-        // System.out.println("Total Ties: " + getTieNumber() );
-        // System.out.print("Total points scored: " + getTotalGoal());
-        // System.out.print("  Total points allowed: " + getTotalgoalAllowed()+ "\n");
     }
 
 }

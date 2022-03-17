@@ -9,9 +9,6 @@ import java.util.Scanner;
  */
 public class SoccerGame {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Team team1 = new Team();
@@ -19,42 +16,34 @@ public class SoccerGame {
         Team team3 = new Team();
         Team team4 = new Team("yo");
         Team[] teams = new Team[]{team1, team2, team3, team4};
-        Game g = new Game(team1, team2);
+
         Scheduler scheduler = new Scheduler();
 
         while (scheduler.coldweeks() < 3) {
             System.out.print("Enter today's temperature: ");
             try {
                 Scanner sn = new Scanner(System.in);
-                scheduler.tempInput = sn.nextInt();
+                scheduler.setTempInput(sn.nextInt());
 
             } catch (Exception ex) {
                 System.out.println("!!!!ERROR!!!!\nPlease enter correct temperature");
                 sc.next();
             }
-            if (scheduler.tempInput >= 10) {
+            if (scheduler.getTempInput() >= 10) {
                 scheduler.scheduleGame(teams);
-                g.tempCal();
+                scheduler.coldweeks();
 
             } else {
-                scheduler.coldweeks();
+
+                System.out.println("Too cold to play!!\n");
             }
         }
-
-        g.showAll();
-        System.out.println(teams);
-        g.showTemp();
+        System.out.println("Winter is here!!\n");
+        System.out.println("*************TEAM RESULTS**************\"\n");
+        System.out.println(Arrays.toString(teams));
+        System.out.println("*************GAME RESULTS**************\"\n");
+        scheduler.show();
 
     }
-    //scheduler.getTemp(teams); 
 
-//        System.out.println("*************RESULTS**************");
-//        System.out.println("Team: " + team1.getTeamName());
-//        System.out.println("Total WIns: " + team1.getTotalWin());
-//        System.out.println("Total Losses: " + team1.getTotalLoss());
-//        System.out.println("Total Ties: " + team1.getTieNumber());
-//        System.out.print("Total points scored: " + team1.getTotalGoal());
-//        System.out.print("  Total points allowed: " + team1.getTotalgoalAllowed() + "\n");
 }
-
-
