@@ -19,7 +19,7 @@ public class SoccerGame {
 
         Scheduler scheduler = new Scheduler();
 
-        while (scheduler.coldweeks() < 3) {
+        while (scheduler.getColdWeeks() < 3) {
             System.out.print("Enter today's temperature: ");
             try {
                 Scanner sn = new Scanner(System.in);
@@ -29,9 +29,9 @@ public class SoccerGame {
                 System.out.println("!!!!ERROR!!!!\nPlease enter correct temperature");
                 sc.next();
             }
+            scheduler.coldweeks();
             if (scheduler.getTempInput() >= 10) {
                 scheduler.scheduleGame(teams);
-                scheduler.coldweeks();
 
             } else {
 
@@ -39,10 +39,14 @@ public class SoccerGame {
             }
         }
         System.out.println("Winter is here!!\n");
-        System.out.println("*************TEAM RESULTS**************\"\n");
-        System.out.println(Arrays.toString(teams));
-        System.out.println("*************GAME RESULTS**************\"\n");
-        scheduler.show();
+        try {
+            System.out.println("*************TEAM RESULTS**************\"\n");
+            System.out.println(Arrays.toString(teams));
+            System.out.println("*************GAME RESULTS**************\"\n");
+            scheduler.show();
+        } catch (Exception ex) {
+            System.out.println("No game was played");
+        }
 
     }
 

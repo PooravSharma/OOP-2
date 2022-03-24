@@ -18,16 +18,17 @@ public class Scheduler {
     Random rn = new Random();
     private int tempInput;
     Game game1, game2;
-    private int coldWeeks = 0;
+    private static int coldWeeks = 0;
 
     public int coldweeks() {
         if (getTempInput() < 10) {
             coldWeeks++;
+            
         } else if (getTempInput() >= 10) {
             coldWeeks = 0;
         }
 
-        return coldWeeks;
+        return getColdWeeks();
     }
 
     public void scheduleGame(Team[] teams) {
@@ -77,5 +78,13 @@ public class Scheduler {
         System.out.println(game1.outString());
         game1.showTemp();
     }
+
+    /**
+     * @return the coldWeeks
+     */
+    public static int getColdWeeks() {
+        return coldWeeks;
+    }
+    
 
 }
