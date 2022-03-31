@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class DatabaseMethods {
-    
+
     Scanner sc = new Scanner(System.in);
     String url = "jdbc:mysql://localhost:3306/student_management";
     String user = "root";
@@ -18,7 +18,7 @@ public class DatabaseMethods {
         try {
             con = DriverManager.getConnection(url, user, password);
             con.setAutoCommit(false);
-            stmt = con.createStatement(); 
+            stmt = con.createStatement();
 
         } catch (SQLException ex) {
             System.out.println("SQLException caught: " + ex.getMessage());
@@ -49,7 +49,7 @@ public class DatabaseMethods {
         String subName = sc.next();
         System.out.println("What Score did you get?");
         int subScore = sc.nextInt();
-        try {            
+        try {
             stmt = con.createStatement();
 
             query = "INSERT INTO student_score (Subject, Score)"
@@ -69,7 +69,7 @@ public class DatabaseMethods {
         try {
             query = "DELETE FROM student_score WHERE Subject = '" + subName + "'"
                     + "AND Score = " + subScore + ";";
-           stmt.execute(query);
+            stmt.execute(query);
             con.commit();
         } catch (SQLException ex) {
             System.out.println("Could not delete from database");
@@ -88,7 +88,7 @@ public class DatabaseMethods {
                     + "SET Score = " + newScore + ""
                     + "WHERE Subject = '" + subName + "'"
                     + "AND Score = " + oldScore + ";";
-           stmt.executeUpdate(query);
+            stmt.executeUpdate(query);
             con.commit();
         } catch (SQLException ex) {
             System.out.println("Could not update the database");

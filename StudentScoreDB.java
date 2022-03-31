@@ -21,22 +21,20 @@ public class StudentScoreDB {
 
             switch (userInput) {
                 case 'w' -> {
-                   Method.Showdatabase();
+                    Method.Showdatabase();
                 }
-                case 'a' ->{
+                case 'a' -> {
                     Method.Add();
                 }
-                case 's' ->{
+                case 's' -> {
                     Method.Delete();
                 }
-                case 'd' ->{
+                case 'd' -> {
                     Method.Update();
                 }
             }
         } while (!(userInput == 'e'));
         Method.Close();
-        
+
     }
 }
-
-    
