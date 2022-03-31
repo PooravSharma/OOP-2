@@ -16,7 +16,6 @@ public class CreateDatabase {
         Statement stmt = null;
         String query;
         ResultSet result = null;
-
         try {
             con = DriverManager.getConnection(url, user, password);
             stmt = con.createStatement();
