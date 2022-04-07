@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wholeworthsgrocery.FXMLController">
    <children>
-      <Button layoutX="155.0" layoutY="336.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" text="Calculate">
+      <Button fx:id="calculatebtn" layoutX="155.0" layoutY="336.0" mnemonicParsing="false" onAction="#calculate" prefHeight="37.0" prefWidth="105.0" text="Calculate">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="egginputTextbox" layoutX="79.0" layoutY="131.0" onAction="#egginputTextbox" onInputMethodTextChanged="#egginputTextbox" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="egginputTextbox" layoutX="79.0" layoutY="131.0" onKeyTyped="#egginputTextbox" prefHeight="25.0" prefWidth="76.0" />
       <Label layoutX="23.0" layoutY="96.0" text="Eggs:" textFill="#e40e0e">
          <font>
             <Font size="24.0" />
@@ -25,13 +24,13 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="totaleggCost" layoutX="270.0" layoutY="131.0" onAction="#gettotaleggCost" />
+      <TextField fx:id="totaleggCost" layoutX="270.0" layoutY="131.0" />
       <Label layoutX="207.0" layoutY="132.0" text="Subtotal:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="MilkinputTextbox" layoutX="79.0" layoutY="206.0" onAction="#MilkinputTextbox" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="MilkinputTextbox" layoutX="79.0" layoutY="206.0" onKeyTyped="#MilkinputTextbox" prefHeight="25.0" prefWidth="76.0" />
       <Label layoutX="23.0" layoutY="171.0" text="Milk:" textFill="#e40e0e">
          <font>
             <Font size="24.0" />
@@ -42,13 +41,13 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="totalmilkCost" layoutX="270.0" layoutY="206.0" onAction="#gettotalmilkCost" />
+      <TextField fx:id="totalmilkCost" layoutX="270.0" layoutY="206.0" />
       <Label layoutX="207.0" layoutY="207.0" text="Subtotal:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="BreadinputTextbox" layoutX="79.0" layoutY="278.0" onAction="#BreadinputTextbox" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="BreadinputTextbox" layoutX="79.0" layoutY="278.0" onKeyTyped="#BreadinputTextbox" prefHeight="25.0" prefWidth="76.0" />
       <Label layoutX="23.0" layoutY="243.0" text="Bread:" textFill="#e40e0e">
          <font>
             <Font size="24.0" />
@@ -59,7 +58,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="totalbreadCost" layoutX="270.0" layoutY="278.0" onAction="#gettotalbreadCost" />
+      <TextField fx:id="totalbreadCost" layoutX="270.0" layoutY="278.0" />
       <Label layoutX="207.0" layoutY="279.0" text="Subtotal:">
          <font>
             <Font size="16.0" />
@@ -70,10 +69,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="overallCost" layoutX="142.0" layoutY="390.0" onAction="#getoverallCost" />
+      <TextField fx:id="overallCost" layoutX="142.0" layoutY="390.0" />
       <Label layoutX="36.0" layoutY="41.0" text="Wholeworths Grocery Items:" textFill="#171717">
          <font>
             <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="myLabel" layoutX="114.0" layoutY="415.0" prefHeight="35.0" prefWidth="237.0" textAlignment="CENTER" textFill="#e80404">
+         <font>
+            <Font size="16.0" />
          </font>
       </Label>
    </children>
