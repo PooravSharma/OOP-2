@@ -81,11 +81,11 @@ public class DatabaseMethods {
         String subName = sc.next();
         System.out.println("What is old Score?");
         int oldScore = sc.nextInt();
-        System.out.println("What is new Score you wan to change to?");
+        System.out.println("What is new Score you want to change to?");
         int newScore = sc.nextInt();
         try {
             query = "UPDATE student_score "
-                    + "SET Score = " + newScore + ""
+                    + "SET Score = " + newScore + ", Subject = '"+ subName+"'"
                     + "WHERE Subject = '" + subName + "'"
                     + "AND Score = " + oldScore + ";";
             stmt.executeUpdate(query);
