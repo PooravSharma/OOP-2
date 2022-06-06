@@ -29,11 +29,10 @@ public class Car implements Comparable<Car>, Serializable {
 
     @Override
     public int compareTo(Car cars) {
-        int compareMake = Integer.parseInt(cars.getMake());
-        int thMake = Integer.parseInt(this.make); 
-        return thMake - compareMake;
-
-        
+        int compareMake = this.make.compareTo(cars.getMake());
+       if (compareMake < 0) return -1;
+       if (compareMake > 0) return 1;
+        return 0;  
     }
 
     public String getMake() {
