@@ -23,7 +23,11 @@ public class ArrayListObjectDemo {
     public static void main(String[] args) {
         char userInput;
 
-        carList.add(new Car("hi", "lol", "ha", 3223));
+        carList.add(new Car("high", "toyota", "2010", 3223));
+        carList.add(new Car("low", "Audi", "2007", 435435));
+        carList.add(new Car("fast", "Cadillac", "2008", 24334));
+        carList.add(new Car("transport", "Tesla", "2012", 2131));
+        carList.add(new Car("apple", "Chevrolet", "1999", 876587));
 
         do {
             System.out.println("\nEnter 'V' to view Car List");
@@ -44,7 +48,7 @@ public class ArrayListObjectDemo {
                     addCar();
                 }
                 case 'o' -> {
-                    Collections.sort(carList);
+                    Sort(carList);
                 }
                 case 's' -> {
                     Save();
@@ -56,7 +60,7 @@ public class ArrayListObjectDemo {
                     Search();
                 }
             }
-        } while (!(userInput == 'e'));
+        } while (!(userInput == 'w'));
 
     }
 
@@ -69,53 +73,75 @@ public class ArrayListObjectDemo {
         }
     }
 
-    static public void addCar() {
+    public static void addCar() {
         sc.nextLine();
+
         System.out.println("What is the make of the car?");
         String urMake = sc.nextLine();
+
         System.out.println();
+
         System.out.println("What is the model of the car?");
         String urModel = sc.nextLine();
+
         System.out.println();
+
         System.out.println("What is the year of the car?");
         String urYear = sc.nextLine();
+
         System.out.println();
-        System.out.println("What is the total ODO meter of the car?");
-        int urOdoMeter = sc.nextInt();
+
+        int urODOMeter = -1;
+        while (urODOMeter < 0) {
+            System.out.println("What is the total ODO meter of the car?");
+            String input = sc.nextLine();
+            try {
+                urODOMeter = Integer.valueOf(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter correct integer input");
+                urODOMeter = -1;
+            }
+        }
+
         System.out.println();
-        carList.add(new Car(urMake, urModel, urYear, urOdoMeter));
+        carList.add(new Car(urMake, urModel, urYear, urODOMeter));
     }
 
-    static public void Save() {
+    public static void Save() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("carLIst.bin");
+            FileOutputStream fileOut = new FileOutputStream("carList.bin");
             ObjectOutputStream carOut = new ObjectOutputStream(fileOut);
-            carOut.writeObject(carList);
+            for (int x = 0; x < carList.size(); x++) {
+                carOut.writeObject(carList.get(x));
+            }
             System.out.println("Completed!! Saved file in result.bin");
         } catch (IOException e) {
             System.out.println(e);
         }
+
     }
 
-    static public void Load() {
+    public static void Load() {
 
         try {
             FileInputStream fileIn = new FileInputStream("carList.bin");
             ObjectInputStream carIn = new ObjectInputStream(fileIn);
-            Vehicle.Car c = (Car) carIn.readObject();
-            while (c != null) {
-                carList.add(c);
+            while (carIn.available() != 0) {
+                Car car = (Car) carIn.readObject();
+                carList.add(car);
             }
+            System.out.print("Successfully loaded carList");
+            carIn.close();
             fileIn.close();
             System.out.print("Successfully loaded carList");
         } catch (IOException err) {
             System.err.println(err);
         } catch (ClassNotFoundException err) {
-            System.err.println(err);
+            System.err.println("Cannot find class");
         }
     }
 
-    static public void Search() {
+    public static void Search() {
         boolean found = false;
         sc.nextLine();
         System.out.println("What make are you searching for?");
@@ -133,4 +159,10 @@ public class ArrayListObjectDemo {
             System.out.println("Car with that make is not found in the carList ");
         }
     }
+
+    public static void Sort(ArrayList<Car> list) {
+        Collections.sort(list);
+        System.out.println("Car list has been sorted");
+    }
+
 }
