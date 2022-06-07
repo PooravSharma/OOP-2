@@ -51,10 +51,10 @@ public class ArrayListObjectDemo {
                     Sort(carList);
                 }
                 case 's' -> {
-                    Save();
+                    SaveFile();
                 }
                 case 'l' -> {
-                    Load();
+                    LoadFile();
                 }
                 case 'e' -> {
                     Search();
@@ -64,7 +64,10 @@ public class ArrayListObjectDemo {
 
     }
 
-    static public void DisplayList() {
+    /**
+     * Displays the Car List
+     */
+    public static void DisplayList() {
 
         for (Car c : carList) {
             System.out.println(c.getMake() + " " + c.getModel() + "\tYear: " + c.getYear());
@@ -73,6 +76,9 @@ public class ArrayListObjectDemo {
         }
     }
 
+    /**
+     * Adds more Cars into the List
+     */
     public static void addCar() {
         sc.nextLine();
 
@@ -107,12 +113,16 @@ public class ArrayListObjectDemo {
         carList.add(new Car(urMake, urModel, urYear, urODOMeter));
     }
 
-    public static void Save() {
+    /**
+     * Save the list into a binary file
+     */
+    public static void SaveFile() {
         try {
             FileOutputStream fileOut = new FileOutputStream("carList.bin");
             ObjectOutputStream carOut = new ObjectOutputStream(fileOut);
             for (int x = 0; x < carList.size(); x++) {
                 carOut.writeObject(carList.get(x));
+                System.out.println("Saving...");
             }
             System.out.println("Completed!! Saved file in result.bin");
         } catch (IOException e) {
@@ -121,26 +131,32 @@ public class ArrayListObjectDemo {
 
     }
 
-    public static void Load() {
-
+    /**
+     * Loads the list into a binary file
+     */
+    public static void LoadFile() {
+        carList.clear();
         try {
-            FileInputStream fileIn = new FileInputStream("carList.bin");
-            ObjectInputStream carIn = new ObjectInputStream(fileIn);
-            while (carIn.available() != 0) {
-                Car car = (Car) carIn.readObject();
-                carList.add(car);
+            try (FileInputStream fileIn = new FileInputStream("carList.bin"); ObjectInputStream carIn = new ObjectInputStream(fileIn)) {
+                while (carIn.available() != -1) {
+                    Car car = (Car) carIn.readObject();
+                    carList.add(car);
+                    System.out.println("Loading...");
+                }
+                System.out.print("Successfully loaded carList");
             }
-            System.out.print("Successfully loaded carList");
-            carIn.close();
-            fileIn.close();
-            System.out.print("Successfully loaded carList");
+
         } catch (IOException err) {
-            System.err.println(err);
+            System.out.println("Loading...");
         } catch (ClassNotFoundException err) {
             System.err.println("Cannot find class");
         }
+
     }
 
+    /**
+     * Searches for the make of the car
+     */
     public static void Search() {
         boolean found = false;
         sc.nextLine();
@@ -160,6 +176,9 @@ public class ArrayListObjectDemo {
         }
     }
 
+    /**
+     * Sorts the list by the car's make alphabetical order
+     */
     public static void Sort(ArrayList<Car> list) {
         Collections.sort(list);
         System.out.println("Car list has been sorted");
