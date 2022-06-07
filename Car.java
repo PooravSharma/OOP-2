@@ -25,14 +25,21 @@ public class Car implements Comparable<Car>, Serializable {
         this.odometer = odometer;
     }
 
-    
-
+    /**
+     * Used when sorting the list
+     *
+     * @param cars
+     */
     @Override
     public int compareTo(Car cars) {
         int compareMake = this.make.compareTo(cars.getMake());
-       if (compareMake < 0) return -1;
-       if (compareMake > 0) return 1;
-        return 0;  
+        if (compareMake < 0) {
+            return -1;
+        }
+        if (compareMake > 0) {
+            return 1;
+        }
+        return 0;
     }
 
     public String getMake() {
@@ -85,7 +92,7 @@ public class Car implements Comparable<Car>, Serializable {
      * @param odometer the odometer to set
      */
     public void setOdometer(int odometer) {
-        Random rn = new Random();
-        this.odometer = rn.nextInt(9999999);
+
+        this.odometer = odometer;
     }
 }
