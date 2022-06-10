@@ -22,7 +22,7 @@ import myloan.*;
  */
 public class CreateLoans {
 
-    public static double primeRate = -1;
+    private static double primeRate = -1;
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Loan> loans = new ArrayList<>();
 
@@ -201,7 +201,7 @@ public class CreateLoans {
      */
     public static void saveLoans() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("loanList.bin");
+            FileOutputStream fileOut = new FileOutputStream("loan.bin");
             ObjectOutputStream streamOut = new ObjectOutputStream(fileOut);
             for (int x = 0; x < loans.size(); x++) {
                 streamOut.writeObject(loans.get(x));
@@ -222,7 +222,7 @@ public class CreateLoans {
     public static void loadLoans() {
         loans.clear();
         try {
-            try ( FileInputStream fileIn = new FileInputStream("loanList.bin");  ObjectInputStream streamIn = new ObjectInputStream(fileIn)) {
+            try ( FileInputStream fileIn = new FileInputStream("loan.bin");  ObjectInputStream streamIn = new ObjectInputStream(fileIn)) {
                 while (streamIn.available() != -1) {
                     Loan loan = (Loan) streamIn.readObject();
                     loans.add(loan);
