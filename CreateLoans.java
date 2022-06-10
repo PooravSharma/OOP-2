@@ -52,7 +52,7 @@ public class CreateLoans {
             System.out.println("\nEnter 'A' to take a loan out");
             System.out.println("Enter 'D' to display your loan information");
             System.out.println("Enter 'S' to Save the loans");
-            System.out.println("Enter 'L' to Load a car List");
+            System.out.println("Enter 'L' to Load loan List");
             System.out.println("Enter 'W' to Exit");
             System.out.print("=>");
             userInput = sc.next().toLowerCase().charAt(0);
